@@ -3,29 +3,29 @@ name: Build EXE
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:
 
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout source
+      - name: 코드 가져오기
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Java 설치
+        uses: actions/setup-java@v4
         with:
-          node-version: '20'
+          distribution: temurin
+          java-version: 21
 
-      - name: Install dependencies
-        run: npm install
+      - name: Gradle 실행 권한
+        run: chmod +x gradlew
 
-      - name: Build exe
-        run: npm run packageExe
+      - name: packageExe 실행
+        run: ./gradlew packageExe
 
-      - name: Upload artifact
+      - name: EXE 업로드
         uses: actions/upload-artifact@v4
         with:
-          name: exe-file
-          path: dist/*.exe
+          name: Study-exe
+          path: build/**/*.exe
