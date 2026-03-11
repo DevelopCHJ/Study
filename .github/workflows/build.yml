@@ -22,7 +22,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build EXE with Gradle
-        run: ./gradlew clean packageExe
+        run: ./gradlew clean build packageExe
 
       - name: Upload EXE as artifact
         uses: actions/upload-artifact@v4
