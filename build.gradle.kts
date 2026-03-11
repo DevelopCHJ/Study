@@ -297,6 +297,7 @@ tasks.register("creteKey") {
         // 4. 암호화된 파일 저장 (exe에 포함될 resources)
         //val outputFile = file("$buildDir/resources/main/config.enc")
         val outputFile = layout.buildDirectory.file("resources/main/config.enc").get().asFile
+        outputFile.parentFile.mkdirs()
         outputFile.writeText(encryptedBase64)
 
         println("Encrypted config saved to: ${outputFile.absolutePath}")
