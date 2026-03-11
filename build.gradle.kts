@@ -285,7 +285,7 @@ tasks.register("creteKey") {
 
         // 2. yml 파일 읽기
         //val ymlFile = file("src/main/resources/config.yml")
-        val ymlFile = layout.buildDirectory.file("resources/main/config.enc").get().asFile
+        val ymlFile = layout.projectDirectory.file("src/main/resources/config.yml").asFile
         val ymlContent = ymlFile.readText()
 
         // 3. AES 암호화
