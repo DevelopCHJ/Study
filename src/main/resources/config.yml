@@ -1,0 +1,7 @@
+app:
+  name: MySampleApp
+  version: 1.2.3
+  features:
+    enableLogin: true
+    enableNotifications: false
+    maxUsers: 100
