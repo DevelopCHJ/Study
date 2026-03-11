@@ -5,7 +5,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class SampleService {
 
+    @Value("${app.name}")
+    public String name;
+
     public String getMessage() {
-        return "Spring Framework 6 + JavaFX 21 성공!";
+        String appName = name;
+        return "Spring Framework 6 + JavaFX 21 성공!["+appName+"]";
     }
+
 }
