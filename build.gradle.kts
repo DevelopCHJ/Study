@@ -284,7 +284,8 @@ tasks.register("creteKey") {
         println("Generated Key: $encodedKey")
 
         // 2. yml 파일 읽기
-        val ymlFile = file("src/main/resources/config.yml")
+        //val ymlFile = file("src/main/resources/config.yml")
+        val ymlFile = layout.buildDirectory.file("resources/main/config.enc").get().asFile
         val ymlContent = ymlFile.readText()
 
         // 3. AES 암호화
@@ -294,7 +295,8 @@ tasks.register("creteKey") {
         val encryptedBase64 = Base64.getEncoder().encodeToString(encryptedBytes)
 
         // 4. 암호화된 파일 저장 (exe에 포함될 resources)
-        val outputFile = file("$buildDir/resources/main/config.enc")
+        //val outputFile = file("$buildDir/resources/main/config.enc")
+        val outputFile = layout.buildDirectory.file("resources/main/config.enc").get().asFile
         outputFile.writeText(encryptedBase64)
 
         println("Encrypted config saved to: ${outputFile.absolutePath}")
